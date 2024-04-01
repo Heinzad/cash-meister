@@ -2,6 +2,7 @@
 -- Home page route
 """
 
+from flask import render_template
 from app import app 
 
 # decorator modifying the function that follows it 
@@ -12,6 +13,27 @@ from app import app
 
 @app.route('/')
 @app.route('/index')
-def index(): 
-    return "Hello, World" 
+def index():
+    user = {'username': 'Adminator'}
+    directories = [
+        {
+            'financial_year': 2004,
+            'category': 'banking', 
+            'description': 'bank statements',
+            'filepath': '/cash_meister/banking/b2024'
+        }, 
+        {
+            'financial_year': 2024,
+            'category': 'receivables', 
+            'description': 'accounts receivable',
+            'filepath': '/cash_meister/receivables/r2024'
+        }, 
+        {
+            'financial_year': 2024,
+            'category': 'payables', 
+            'description': 'accounts payable', 
+            'filepath': '/cash_meister/payables/p2024'
+        }
+    ]
+    return render_template('index.html', title='Home', user=user, directories=directories)
 
