@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block content %}
+        <h1>Hi, {{ user.username }}!</h1>
+        {% for directory in directories %}
+        <div><p>{{directory.financial_year}} - {{ directory.category }} ({{ directory.description }}) directory: {{ directory.filepath }}</p></div>
+        {% endfor %}
+{% endblock %} 
